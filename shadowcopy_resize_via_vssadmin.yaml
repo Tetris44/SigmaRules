@@ -13,11 +13,12 @@ logsource:
 detection:
 
   selection:
-    - CommendLine|contains: 
-    - 'vssadmin'
-    - 'resize'
-    - 'shadowstorage'
-    
+    CommendLine|contains: 
+      - 'vssadmin'
+      - 'resize'
+      - 'shadowstorage'
+
+
   condition: selection
 falsepositives:
   - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
