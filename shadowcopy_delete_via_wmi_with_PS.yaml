@@ -13,10 +13,11 @@ logsource:
 detection:
 
   selection:
-    - CommendLine|contains: 
-    - 'Win32_Shadowcopy'
-    - '$_Delete'
-    - 'Get-WmiObject'
+    CommendLine|contains:
+      - 'Win32_Shadowcopy'
+      - '$_Delete'
+      - 'Get-WmiObject'
+    
     
   condition: selection
 falsepositives:
