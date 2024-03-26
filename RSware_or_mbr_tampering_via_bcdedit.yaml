@@ -12,19 +12,20 @@ logsource:
   product: windows
 detection:
   selection:
-    - Image|endswith: 'bcdedit.exe'
+    Image|endswith: 'bcdedit.exe'
 
   selection2:
-    - CommendLine|contains: 
-    - 'recoveryenable'
-    - 'bootstatuspolicy'
-    - 'ignoreallfailures'
-    - 'delete'
-    - 'deletevalue'
-    - 'import'
-    - 'safeboot'
-    - 'network'
-    
+
+    CommendLine|contains: 
+      - 'recoveryenable'
+      - 'bootstatuspolicy'
+      - 'ignoreallfailures'
+      - 'delete'
+      - 'deletevalue'
+      - 'import'
+      - 'safeboot'
+      - 'network'
+
   condition: selection and selection2
 falsepositives:
   - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
