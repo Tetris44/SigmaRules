@@ -1,0 +1,24 @@
+title: Resize Volume Shadow Copies Via Vssadmin
+id: d6a0a9f5-554c-43a1-87f1-f1f7fc9378ab
+status: experimental
+description: Shadow Copies deletion using operating systems utilities via Vssadmin.
+author: Emirhan KISA
+date: 2024/03/25
+tags:
+  - attack.t1490
+  - attack.tA0005
+logsource: 
+  category: process_creation
+  product: windows
+detection:
+
+  selection:
+    - CommendLine|contains: 
+    - 'vssadmin'
+    - 'resize'
+    - 'shadowstorage'
+    
+  condition: selection
+falsepositives:
+  - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
+level: high

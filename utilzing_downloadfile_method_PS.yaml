@@ -1,0 +1,31 @@
+title: Utilizing the DownloadFile Method of PowerShell
+id: 41375cfe-d0b1-4076-bfd4-5b2b9de1883d
+status: experimental
+description: Utilizing the DownloadFile method of PowerShell to download malicious files/binary.
+author: Emirhan KISA
+date: 2024/03/25
+tags:
+  - attack.t1059.001
+logsource: 
+  category: process_creation
+  product: windows
+detection:
+  selection: 
+      Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+      OriginalFileName:
+            - 'PowerShell.EXE'
+            - 'pwsh.dll'
+  selection2:
+      CommandLine|contains:
+            - '.DownloadFile'
+            - 'http'
+            - 'https'
+            - 'powershell'
+
+  condition: (selection and (2 of selection2)) or (3 of selection2)
+  condition2: condition and selection3
+falsepositives:
+    - Legitimate administrative activities
+level: medium

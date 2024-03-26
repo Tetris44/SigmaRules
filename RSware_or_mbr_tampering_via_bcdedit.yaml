@@ -1,0 +1,31 @@
+title: Potential ransomware or unauthorized MBR tampering via Bcdedit
+id: 0ff270a5-ceae-4c3f-833a-5689db01df5b
+status: experimental
+description: Potential ransomware or unauthorized MBR tampering via Bcdedit.
+author: Emirhan KISA
+date: 2024/03/25
+tags:
+  - attack.t1490
+  - attack.tA0005
+logsource: 
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    - Image|endswith: 'bcdedit.exe'
+
+  selection2:
+    - CommendLine|contains: 
+    - 'recoveryenable'
+    - 'bootstatuspolicy'
+    - 'ignoreallfailures'
+    - 'delete'
+    - 'deletevalue'
+    - 'import'
+    - 'safeboot'
+    - 'network'
+    
+  condition: selection and selection2
+falsepositives:
+  - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
+level: high

@@ -1,0 +1,25 @@
+title: Delete Volume Shadow Copies Via WMI
+id: ae4a02dd-5ec1-4cda-a897-f1c66825d51f
+status: test
+description: Shadow Copies deletion using operating systems utilities. 
+author: Emirhan KISA
+date: 2024/03/25
+tags:
+  - attack.t1490
+  - attack.tA0005
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    - Image|endswith: 'wmic.exe'
+  selection2:
+    - CommendLine|contains: 
+    - 'shadowcopy'
+    - 'delete'
+  
+    
+  condition: selection and 2 of selecetion2
+falsepositives:
+  - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
+level: high

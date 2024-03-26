@@ -1,0 +1,21 @@
+title: 123123
+id: d6a0a9f5-554c-43a1-87f1-f1f7fc9378ab
+status: experimental
+description: Detects 
+references:
+  - 
+author: Emirhan KISA
+date: 2024/03/25
+tags:
+  - 
+logsource:
+  category: antivirus
+  product: aws
+  service: activitylogs
+detection:
+  selection:
+    
+  condition: selection
+falsepositives:
+  - Unknown
+level: critical

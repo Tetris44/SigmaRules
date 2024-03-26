@@ -1,0 +1,27 @@
+title: Removing Backup Catalog or Backup Data
+id: 4ef8b44d-21c9-4250-9f33-c34c05d30da2
+status: experimental
+description: Delete system state backups or the backup catalog. 
+author: Emirhan KISA
+date: 2024/03/25
+tags:
+  - attack.t1490
+  - attack.tA0005
+logsource: 
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    - Image|endswith: 'wbadmin.exe'
+
+  selection2:
+    - CommendLine|contains: 
+    - 'delete'
+    - 'catalog'
+    - 'SYSTEMSTATEBACKUP'
+
+    
+  condition: selection and selection2
+falsepositives:
+  - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
+level: high
