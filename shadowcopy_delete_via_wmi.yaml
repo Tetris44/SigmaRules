@@ -12,11 +12,14 @@ logsource:
   product: windows
 detection:
   selection:
-    - Image|endswith: 'wmic.exe'
+    
+    Image|endswith: 'wmic.exe'
   selection2:
-    - CommendLine|contains: 
-    - 'shadowcopy'
-    - 'delete'
+    CommendLine|contains:
+      - 'shadowcopy'
+      - 'delete'
+  
+    
   
     
   condition: selection and 2 of selecetion2
