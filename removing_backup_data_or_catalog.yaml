@@ -15,12 +15,11 @@ detection:
     - Image|endswith: 'wbadmin.exe'
 
   selection2:
-    - CommendLine|contains: 
-    - 'delete'
-    - 'catalog'
-    - 'SYSTEMSTATEBACKUP'
+    CommendLine|contains:
+      - 'delete'
+      - 'catalog'
+      - 'SYSTEMSTATEBACKUP'
 
-    
   condition: selection and selection2
 falsepositives:
   - Legitimate Administrator deletes Shadow Copies using operating systems utilities for legitimate reason.
